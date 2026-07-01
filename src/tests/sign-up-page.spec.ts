@@ -43,6 +43,7 @@ test.describe('Register new memeber', () => {
         await signUpPage.verifyAlertMsgMissingCheckBox(alerMessage);          
     });
 });
+
 test.describe.skip('Sign Up Page - Additional Tests', () => {
   let loginPage: LoginPage;
   let signUpPage: SignUpPage;
