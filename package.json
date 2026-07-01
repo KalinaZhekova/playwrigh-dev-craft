@@ -1,0 +1,28 @@
+{
+  "name": "playwrigh-dev-craft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KalinaZhekova/playwrigh-dev-craft.git"
+  },
+  "keywords": [],
+  "author": "kzhekova",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KalinaZhekova/playwrigh-dev-craft/issues"
+  },
+  "homepage": "https://github.com/KalinaZhekova/playwrigh-dev-craft#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^22.20.0",
+    "typescript": "^6.0.3"
+  }
+}
