@@ -1,25 +1,28 @@
 import {Locator, Page, expect} from '@playwright/test';
 import { BasePage } from './base-page';
+import { config } from '../config/config';
+
 
 export class LoginPage extends BasePage {
     private loginButton: Locator;
     private textTitle: Locator;
     private textInfo: Locator; 
     private joinHereLink: Locator;
-    private loginUrl = 'https://code-staging-web.on.dev-craft.tech/login';
+    private loginUrl: string;
 
     constructor(page: Page) {
         super(page); 
         this.page = page; 
         this.loginButton = page.locator('#login'); 
         this.textInfo = page.locator('span.helvetica.text-h6'); 
-        this.textTitle = page.locator('h1.text-primary'); 
-        this.joinHereLink = page.getByRole('link', { name: 'Join here' });//page.locator('a.wc\:underline[href="/signup"]');                        
+        this.textTitle = page.locator('h1.text-primary');
+        this.loginUrl = `${config.baseUrl}${config.loginUrl}`;       
+        this.joinHereLink = page.getByRole('link', { name: 'Join here' });                     
       }
 
 async openLoginPage(): Promise<void> {
-      await this.navigate(this.loginUrl);
-    }
+    await this.navigate(this.loginUrl);
+  }
 
 async verifyTextTitle(pageTextTitle: string) {
     await expect(this.textTitle).toHaveText(pageTextTitle);  

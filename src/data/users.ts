@@ -1,4 +1,4 @@
-const pwd = 'my_secret';
+const pwd = process.env.TEST_PASSWORD || 'default_test_pwd';
 const pwd_empty = '';
 
 function generateUniqueEmail(): string {

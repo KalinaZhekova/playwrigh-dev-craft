@@ -1,6 +1,8 @@
 import {Locator, Page, expect} from '@playwright/test';
 import { BasePage } from './base-page';
-import { users, User } from '../data/users'
+import { users, User } from '../data/users';
+import { config } from '../config/config';
+
 
 
 export class SignUpPage extends BasePage {
@@ -17,7 +19,7 @@ export class SignUpPage extends BasePage {
     private alertMsgMissingPsw: Locator;
     private alertIconCheckBox: Locator;
     private requiredFieldMsg: Locator;
-    private signUpUrl = 'https://code-staging-web.on.dev-craft.tech/signup/1';
+    private signupUrl: string;
 
     constructor(page: Page) {
         super(page); 
@@ -35,12 +37,14 @@ export class SignUpPage extends BasePage {
         this.alertMsgMissingPsw = page.locator('div.q-field__messages div[role="alert"]');
         this.alertIconCheckBox = page.locator('i.q-icon.text-negative');
         this.requiredFieldMsg = page.locator('.q-field__messages > div[role="alert"]');
+        this.signupUrl = `${config.baseUrl}${config.signupUrl}`;       
+
 
       }
 
-async openLoginPage(): Promise<void> {
-      await this.navigate(this.signUpUrl);
-    }
+async openSignupPage(): Promise<void> {
+    await this.navigate(this.signupUrl);
+  }
 
 async verifyWelcomeTitle(expectedText: string) {
     await expect(this.welcomeTitle).toHaveText(expectedText); 
